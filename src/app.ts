@@ -1,3 +1,4 @@
+// import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import { HttpError } from 'http-errors';
 import logger from './config/logger';
@@ -7,6 +8,15 @@ const app = express();
 app.get('/', (req: Request, res: Response) => {
     res.status(200).send('Helloooooo');
 });
+
+app.post(
+    '/auth/register',
+    (req: Request, res: Response, next: NextFunction) => {
+        res.status(201).send();
+
+        next();
+    },
+);
 
 // GLobal  Error Handling, , neccessary to have 4 parameters
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
